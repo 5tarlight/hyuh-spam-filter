@@ -2,9 +2,11 @@ package io.yeahx4;
 
 import io.yeahx4.io.TextFileReader;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        String content = TextFileReader.read("./words.txt");
-        System.out.println(content);
+        List<String> content = TextFileReader.readAsLines("./words.txt");
+        content.forEach(System.out::println);
     }
 }
