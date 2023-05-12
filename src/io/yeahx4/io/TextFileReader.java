@@ -34,4 +34,38 @@ public class TextFileReader {
                 return line;
         }).filter(Objects::nonNull).collect(Collectors.toList());
     }
+
+    private final File file;
+    private final String cache;
+
+    public TextFileReader(File file) {
+        this.file = file;
+        this.cache = TextFileReader.read(this.file.getPath());
+    }
+
+    public TextFileReader(String path) {
+        this.file = new File(path);
+        this.cache = TextFileReader.read(this.file.getPath());
+    }
+
+    @Override
+    public String toString() {
+        return this.cache;
+    }
+
+    public List<String> toList() {
+        return Arrays.stream(this.cache.split("\n"))
+                .map(String::trim)
+                .filter(str -> !str.equals(""))
+                .collect(Collectors.toList());
+    }
+
+    public int countMatch(String word) {
+         return this
+                 .toList()
+                 .stream()
+                 .map(str -> str.split(word).length - 1)
+                 .mapToInt(i -> i)
+                 .sum();
+    }
 }
