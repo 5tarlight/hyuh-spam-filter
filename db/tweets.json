@@ -1,0 +1,29 @@
+{
+  "tweets": [
+    {
+      "author": "yeahx1",
+      "content": "Free Bitcoin.",
+      "date": "2023-5-16"
+    },
+    {
+      "author": "yeahx2",
+      "content": "How are you?",
+      "date": "2023-5-16"
+    },
+    {
+      "author": "im-scammer",
+      "content": "고수익 보장!",
+      "date": "2023-5-11"
+    },
+    {
+      "author": "im-scammer",
+      "content": "Ad : Free bitcoin 고수익 보장!",
+      "date": "2023-5-13"
+    },
+    {
+      "author": "CNN",
+      "content": "Breaking News!",
+      "date": "2023-5-16"
+    }
+  ]
+}
