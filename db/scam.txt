@@ -4,3 +4,4 @@ profit
 stock
 bitcoin
 비트코인
+사기
