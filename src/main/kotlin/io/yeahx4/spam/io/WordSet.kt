@@ -15,4 +15,6 @@ class WordSet(private val path: String) {
 
         return sb.toString()
     }
+
+    fun toList():List<String> = this.words
 }
