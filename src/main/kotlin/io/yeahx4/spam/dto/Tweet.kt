@@ -16,4 +16,10 @@ data class Tweet(
             
         """.trimIndent()
     }
+
+    fun isNews(): Boolean {
+        return this.author == "CNN"
+                || this.author == "BBC"
+                || this.author == "KBS"
+    }
 }

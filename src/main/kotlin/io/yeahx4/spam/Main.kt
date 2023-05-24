@@ -5,7 +5,6 @@ import io.yeahx4.spam.io.TweetReader
 import io.yeahx4.spam.io.WordSet
 import io.yeahx4.spam.score.AuthorScore
 import io.yeahx4.spam.score.TweetScore
-import io.yeahx4.spam.score.WordMatcher
 
 fun main() {
     val adWords = WordSet("./db/ads.txt")
@@ -21,7 +20,7 @@ fun main() {
 //    val adCounter = WordMatcher(tweets.getTweets().first().content, adWords)
 //    println(adCounter.countWordSet())
 
-    val wordPair = listOf<Pair<WordSet, Int>>(
+    val wordPair = listOf(
         Pair(adWords, Configuration.adScoreModifier),
         Pair(scamWords, Configuration.scamScoreModifier)
     )

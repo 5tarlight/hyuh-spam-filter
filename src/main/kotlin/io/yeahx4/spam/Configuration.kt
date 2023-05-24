@@ -4,5 +4,6 @@ class Configuration {
     companion object {
         const val adScoreModifier = -1
         const val scamScoreModifier = -5
+        const val newsStaticScore = 5
     }
 }
