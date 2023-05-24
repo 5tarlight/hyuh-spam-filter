@@ -1,45 +1,45 @@
 package io.yeahx4.spam
 
-import io.yeahx4.spam.dto.Tweet
-import io.yeahx4.spam.io.TweetReader
-import io.yeahx4.spam.io.WordSet
 import io.yeahx4.spam.score.AuthorScore
-import io.yeahx4.spam.score.TweetScore
 import io.yeahx4.spam.system.Recommendation
+import java.util.Scanner
 
 fun main() {
-    val adWords = WordSet("./db/ads.txt")
-    val scamWords = WordSet("./db/scam.txt")
-    val tweets = TweetReader("./db/tweets.json")
+    val scanner = Scanner(System.`in`)
 
-//    println(adWords.toString())
-//    println(scamWords.toString())
-//    tweets.getTweets().forEach {
-//        println(it.toString())
-//    }
+    println("1. Auto Recommendation")
+    println("2. Full Tweets")
+    println("3. Author Population")
+    println("4. Quit")
+    print("> ")
+    System.out.flush()
 
-//    val adCounter = WordMatcher(tweets.getTweets().first().content, adWords)
-//    println(adCounter.countWordSet())
+    val input = scanner.nextInt()
+    System.out.flush()
 
-    val wordPair = listOf(
-        Pair(adWords, Configuration.adScoreModifier),
-        Pair(scamWords, Configuration.scamScoreModifier)
-    )
+    when (input) {
+        1 -> {
+            val recommendation = Recommendation.done(5)
 
-    val result: List<Pair<Tweet, Int>> = tweets
-        .getTweets()
-        .map { tweet ->
-            Pair(tweet, TweetScore(tweet, wordPair).score())
+            recommendation.forEach {
+                println("${it.first.content} ${it.second}")
+            }
         }
+        2 -> {
+            val tweets = Recommendation.scoreTweet()
 
-//    result.forEach {
-//        println("${it.first.content} ${it.second}")
-//    }
-    println("${result.size} tweets loaded successfully.")
-
-    val recommendation = Recommendation(result).recommend()
-
-    recommendation.forEach {
-        println("${it.first.content} ${it.second}")
+            tweets.forEach {
+                println("${it.first.content} ${it.second}")
+            }
+        }
+        3 -> {
+            Recommendation.done()
+            AuthorScore.reputation.forEach {
+                println("${it.key} : ${it.value}")
+            }
+        }
     }
+
+    println()
+    println()
 }
