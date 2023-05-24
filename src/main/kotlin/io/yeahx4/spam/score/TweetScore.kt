@@ -19,7 +19,7 @@ class TweetScore(private val tweet: Tweet, private val words: List<Pair<WordSet,
         if (score < 0)
             AuthorScore.alterReputation(tweet.author, score)
         else
-            AuthorScore.alterReputation(tweet.author, 1)
+            AuthorScore.alterReputation(tweet.author, Configuration.reputationScore)
 
         return score
     }

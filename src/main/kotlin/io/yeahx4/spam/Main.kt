@@ -5,6 +5,7 @@ import io.yeahx4.spam.io.TweetReader
 import io.yeahx4.spam.io.WordSet
 import io.yeahx4.spam.score.AuthorScore
 import io.yeahx4.spam.score.TweetScore
+import io.yeahx4.spam.system.Recommendation
 
 fun main() {
     val adWords = WordSet("./db/ads.txt")
@@ -31,9 +32,14 @@ fun main() {
             Pair(tweet, TweetScore(tweet, wordPair).score())
         }
 
-    result.forEach {
+//    result.forEach {
+//        println("${it.first.content} ${it.second}")
+//    }
+    println("${result.size} tweets loaded successfully.")
+
+    val recommendation = Recommendation(result).recommend()
+
+    recommendation.forEach {
         println("${it.first.content} ${it.second}")
     }
-
-    println(AuthorScore.getReputation("돈을버는가장빠르고확실한방법"))
 }
