@@ -1,2 +1,2 @@
 # hyuh-spam-filter
-HYUH Spam Scoring System. Referenced Twitter's the algorithm
+HYUH spam filtering and recommendation system. Referenced Twitter's algorithm
